@@ -120,7 +120,36 @@ async function getAllMakers() {
     let response = await fetch ("http://localhost:3000/api/v1/cars/allMakers")
     response=await response.json();
 
-    console.log(response)
+
+    for(i in response) {
+
+
+    }
+}
+
+
+
+// create filters section
+
+// create maker selector
+
+function populateMakerSelector() {
+
+    let selector = document.createElement("select");
+    // selector.classList.
+}    
+
+
+// populate maker selector
+function populateMakerSelector(arr) {
+
+let option = document.createElement("option");
+
+for(let i=0;i<arr.length;i++){
+
+
 
 }
 
+
+}
