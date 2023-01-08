@@ -298,6 +298,53 @@ function createKmSelector() {
     return mainDiv;
 } 
 
+// create radio inputs for fuel
+function createFuelType (){
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("fuel-type-filter")
+
+    let label = document.createElement("label");
+    label.textContent="Fuel type"
+    mainDiv.appendChild(label);
+
+    let secondDiv=document.createElement("div");
+    secondDiv.classList.add("fuel-filters-div")
+    mainDiv.appendChild(secondDiv)
+
+    let diesel = document.createElement("input");
+    diesel.type="checkbox";
+    diesel.id="diesel"
+    diesel.textContent="Diesel";
+    secondDiv.appendChild(diesel)
+
+    let dieselLabel = document.createElement("label");
+    dieselLabel.textContent="Diesel"
+    secondDiv.appendChild(dieselLabel);
+
+    let gasoline = document.createElement("input");
+    gasoline.type="checkbox";
+    gasoline.id="gasoline"
+    gasoline.textContent="Gasoline";
+    secondDiv.appendChild(gasoline)
+
+    let gasolinelLabel = document.createElement("label");
+    gasolinelLabel.textContent="Gasoline"
+    secondDiv.appendChild(gasolinelLabel);
+
+    let gpl = document.createElement("input");
+    gpl.type="checkbox";
+    gpl.id="gpl"
+    gpl.textContent="GPL";
+    secondDiv.appendChild(gpl)
+
+    let gplLabel = document.createElement("label");
+    gplLabel.textContent="GPL"
+    secondDiv.appendChild(gplLabel);
+
+    return mainDiv
+
+}
 
 
 
@@ -307,13 +354,11 @@ function searchFilteredButton() {
     let btn = document.createElement("button");
     btn.textContent="Search"
     btn.id="search-filtered-btn"
-
-
     return btn;
 }
 
 
-// create marketing section
+
 
 
 
@@ -329,7 +374,8 @@ function filtersSection() {
     filtersSection.appendChild(createYearSelector())
     filtersSection.appendChild(createPriceSelector());
     filtersSection.appendChild(createKmSelector());
-    filtersSection.appendChild(searchFilteredButton())
+    filtersSection.appendChild(createFuelType());
+    filtersSection.appendChild(searchFilteredButton());
     return filtersSection;
 }
 
@@ -344,7 +390,7 @@ async function getAllMakers() {
 
 
     for(i in response) {
-        console.log(response[i]);
+        // console.log(response[i]);
         document.querySelector(".maker-selector-filters").appendChild(populateMakerSelector(response[i]))
     }
 }
