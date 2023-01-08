@@ -96,7 +96,7 @@ function createCard (obj){
 }
 
 
-// retrieve API info 
+// retrieve API info - all cars  
 async function getCars(){
 
 
@@ -113,7 +113,229 @@ async function getCars(){
 
 }
 
-// retrieve allMakers API 
+
+
+
+
+
+// populate maker selector
+function populateMakerSelector(obj) {
+let option = document.createElement("option");
+option.id = "maker-selector-option-filters"
+option.text = obj;
+return option;
+}
+
+
+// create maker selector
+
+function createMakerSelector() {
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("maker-filter")
+
+    let label = document.createElement("label");
+    label.textContent="Maker"
+    mainDiv.appendChild(label);
+
+    let selector = document.createElement("select");
+    selector.classList.add("maker-selector-filters")
+    mainDiv.appendChild(selector)
+
+
+    return mainDiv;
+}    
+
+
+// create model selector 
+
+function createModelSelector() {
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("model-filter")
+
+    let label = document.createElement("label");
+    label.textContent="Model"
+    mainDiv.appendChild(label);
+
+    let selector = document.createElement("select");
+    selector.classList.add("model-selector-filters")
+    mainDiv.appendChild(selector)
+
+
+    return mainDiv;
+}    
+
+// create year selector 
+
+function createYearSelector() {
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("year-filter")
+
+    let label = document.createElement("label");
+    label.textContent="Year"
+    mainDiv.appendChild(label);
+
+    let secondDiv=document.createElement("div");
+    secondDiv.classList.add("year-filter-from-to-div")
+    mainDiv.appendChild(secondDiv)
+
+    let fromDiv=document.createElement("div");
+    // secondDiv.classList.add("year-filter-from-to-div")
+    secondDiv.appendChild(fromDiv);
+
+    let toDiv=document.createElement("div");
+    // secondDiv.classList.add("year-filter-from-to-div")
+    secondDiv.appendChild(toDiv)
+
+    let fromLabel = document.createElement("label")
+    fromLabel.textContent="From"
+    fromDiv.appendChild(fromLabel)
+
+    let toLabel = document.createElement("label")
+    toLabel.textContent="To"
+    toDiv.appendChild(toLabel)
+
+    let selector = document.createElement("select");
+    selector.classList.add("year-from-selector-filters")
+    fromDiv.appendChild(selector)
+
+    let selector2 = document.createElement("select");
+    selector.classList.add("year-to-selector-filters")
+    toDiv.appendChild(selector2)
+
+
+    return mainDiv;
+} 
+
+
+
+// create price selector
+
+function createPriceSelector() {
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("price-filter")
+
+    let label = document.createElement("label");
+    label.textContent="Price"
+    mainDiv.appendChild(label);
+
+    let secondDiv=document.createElement("div");
+    secondDiv.classList.add("price-filter-from-to-div")
+    mainDiv.appendChild(secondDiv)
+
+    let fromDiv=document.createElement("div");
+    // secondDiv.classList.add("year-filter-from-to-div")
+    secondDiv.appendChild(fromDiv);
+
+    let toDiv=document.createElement("div");
+    // secondDiv.classList.add("year-filter-from-to-div")
+    secondDiv.appendChild(toDiv)
+
+    let fromLabel = document.createElement("label")
+    fromLabel.textContent="From"
+    fromDiv.appendChild(fromLabel)
+
+    let toLabel = document.createElement("label")
+    toLabel.textContent="To"
+    toDiv.appendChild(toLabel)
+
+    let selector = document.createElement("select");
+    selector.classList.add("price-from-selector-filters")
+    fromDiv.appendChild(selector)
+
+    let selector2 = document.createElement("select");
+    selector.classList.add("price-to-selector-filters")
+    toDiv.appendChild(selector2)
+
+
+    return mainDiv;
+} 
+
+
+// create KM selector 
+
+function createKmSelector() {
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("km-filter")
+
+    let label = document.createElement("label");
+    label.textContent="Km"
+    mainDiv.appendChild(label);
+
+    let secondDiv=document.createElement("div");
+    secondDiv.classList.add("km-filter-from-to-div")
+    mainDiv.appendChild(secondDiv)
+
+    let fromDiv=document.createElement("div");
+    // secondDiv.classList.add("year-filter-from-to-div")
+    secondDiv.appendChild(fromDiv);
+
+    let toDiv=document.createElement("div");
+    // secondDiv.classList.add("year-filter-from-to-div")
+    secondDiv.appendChild(toDiv)
+
+    let fromLabel = document.createElement("label")
+    fromLabel.textContent="From"
+    fromDiv.appendChild(fromLabel)
+
+    let toLabel = document.createElement("label")
+    toLabel.textContent="To"
+    toDiv.appendChild(toLabel)
+
+    let selector = document.createElement("select");
+    selector.classList.add("km-from-selector-filters")
+    fromDiv.appendChild(selector)
+
+    let selector2 = document.createElement("select");
+    selector.classList.add("km-to-selector-filters")
+    toDiv.appendChild(selector2)
+
+
+    return mainDiv;
+} 
+
+
+
+
+// create search filtered button 
+
+function searchFilteredButton() {
+    let btn = document.createElement("button");
+    btn.textContent="Search"
+    btn.id="search-filtered-btn"
+
+
+    return btn;
+}
+
+
+// create marketing section
+
+
+
+
+// create filters section
+
+function filtersSection() {
+
+    let filtersSection = document.createElement("section");
+    filtersSection.classList.add("filters-section")
+    filtersSection.appendChild(createMakerSelector())
+    filtersSection.appendChild(createModelSelector());
+    filtersSection.appendChild(createYearSelector())
+    filtersSection.appendChild(createPriceSelector());
+    filtersSection.appendChild(createKmSelector());
+    filtersSection.appendChild(searchFilteredButton())
+    return filtersSection;
+}
+
+
+
+// retrieve allMakers API for the filter by maker section 
 
 async function getAllMakers() {
 
@@ -122,34 +344,7 @@ async function getAllMakers() {
 
 
     for(i in response) {
-
-
+        console.log(response[i]);
+        document.querySelector(".maker-selector-filters").appendChild(populateMakerSelector(response[i]))
     }
-}
-
-
-
-// create filters section
-
-// create maker selector
-
-function populateMakerSelector() {
-
-    let selector = document.createElement("select");
-    // selector.classList.
-}    
-
-
-// populate maker selector
-function populateMakerSelector(arr) {
-
-let option = document.createElement("option");
-
-for(let i=0;i<arr.length;i++){
-
-
-
-}
-
-
 }
