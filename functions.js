@@ -126,6 +126,14 @@ option.text = obj;
 return option;
 }
 
+// populate model selector
+function populateModelSelector(obj) {
+    let option = document.createElement("option");
+    option.id = "model-selector-option-filters"
+    option.text = obj;
+    return option;
+    }
+
 
 // create maker selector
 
@@ -393,4 +401,17 @@ async function getAllMakers() {
         // console.log(response[i]);
         document.querySelector(".maker-selector-filters").appendChild(populateMakerSelector(response[i]))
     }
+}
+
+async function getAllModelsByMaker(param){
+
+    let response = await fetch(`http://localhost:3000/api/v1/cars/${param}/models`)
+    response=await response.json();
+
+    for(i in response) {
+
+        document.querySelector(".model-selector-filters").appendChild(populateModelSelector(response[i]))
+
+    }
+
 }
