@@ -50,7 +50,7 @@ body {
     margin-left: 10px;
 
     background: #13B0CF;
-    background: linear-gradient(to right, #026f85 0%, #47025b 100%);
+    background: linear-gradient(to right, #2368d7 0%, #47025b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -102,6 +102,11 @@ body {
     margin: auto;
     cursor: pointer;
     width: 90px;
+
+    position: absolute;
+    bottom: -20px;
+    left: 42%;
+
 }
 
 #search-filtered-btn:hover {
@@ -225,6 +230,7 @@ transition: 0.5s;
 
 .filters-section{
     /* border: 2px solid red; */
+    position: relative;
     width: 90%;
     max-width: 600px;
     display: grid;
@@ -233,6 +239,7 @@ transition: 0.5s;
     justify-content: center;
     align-items: center;
     padding: 10px;
+    padding-bottom: 50px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 5px;
 }
@@ -379,4 +386,38 @@ select {
 .km-filter-from-to-div  select {
     /* border: 2px solid magenta; */
     width: 95%;
+}
+
+.fuel-filters-div {
+
+    display: flex;
+    
+    align-items: center;
+    /* justify-content: center; */
+    /* border: 2px solid red; */
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.fuel-type-filter {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    margin-right: auto;
+    margin-bottom: auto;
+    font-size: 15px;
+    font-weight: 600;
+
+    /* margin-bottom: 20px; */
+    
+}
+
+#gasoline{
+    margin-left: 15%;
+}
+
+#gpl{
+    margin-left: 15%;
 }
