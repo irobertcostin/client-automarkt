@@ -34,6 +34,32 @@ function navbar(){
     return mainDiv;
 }
 
+// function to create testDriveAdd  
+
+function testDriveAdd() {
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("test-drive-ad")
+
+
+    let btnDiv = document.createElement("div");
+    btnDiv.classList.add("test-drive-btn-div");
+    mainDiv.appendChild(btnDiv)
+
+    let btnImg = document.createElement("img");
+    btnImg.src="./images/pirellibutton.png"
+    btnDiv.appendChild(btnImg)
+    
+
+    let text=document.createElement("p");
+    btnDiv.appendChild(text);
+    text.textContent="Test drive it"   
+
+
+
+    return mainDiv;
+}
+
 
 // function to create a smaller div for front page (before modal)
 function createCard (obj){
@@ -96,6 +122,18 @@ function createCard (obj){
 }
 
 
+// create the content grid 
+function createMainPageContentGrid(){
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("main-page-content-grid");
+
+
+    return mainDiv
+}
+
+
+
 // retrieve API info - all cars  
 async function getCars(){
 
@@ -103,12 +141,12 @@ async function getCars(){
     let response = await fetch ("http://localhost:3000/api/v1/cars");
 
     response = await response.json();
-    console.log(response.masini)
+    // console.log(response.masini)
 
-    let container = document.querySelector(".container")
+    let contentGrid = document.querySelector(".main-page-content-grid")
 
     for(i in response.masini) {
-        container.appendChild(createCard(response.masini[i]))
+        contentGrid.appendChild(createCard(response.masini[i]))
     }
 
 }
@@ -124,6 +162,7 @@ let option = document.createElement("option");
 option.id = "maker-selector-option-filters"
 option.text = obj;
 return option;
+
 }
 
 // populate model selector
@@ -150,6 +189,9 @@ function createMakerSelector() {
     selector.classList.add("maker-selector-filters")
     mainDiv.appendChild(selector)
 
+    let testOption2=document.createElement("option");
+    selector.appendChild(testOption2);
+
 
     return mainDiv;
 }    
@@ -170,9 +212,30 @@ function createModelSelector() {
     selector.classList.add("model-selector-filters")
     mainDiv.appendChild(selector)
 
+    let testOption2=document.createElement("option");
+    selector.appendChild(testOption2);
+
 
     return mainDiv;
 }    
+
+// function to create km options
+
+function createKmOption(obj){
+    let option=document.createElement("option");
+    option.id=obj;
+    option.textContent=obj + " Km";
+
+    return option;
+}
+
+function createYearOption(obj){
+    let option=document.createElement("option");
+    option.id=obj;
+    option.textContent=obj;
+
+    return option;
+}
 
 // create year selector 
 
@@ -209,14 +272,36 @@ function createYearSelector() {
     selector.classList.add("year-from-selector-filters")
     fromDiv.appendChild(selector)
 
-    let selector2 = document.createElement("select");
-    selector.classList.add("year-to-selector-filters")
-    toDiv.appendChild(selector2)
+    let testOption1=document.createElement("option");
+    selector.appendChild(testOption1);
 
+
+
+
+    let selector2 = document.createElement("select");
+    selector2.classList.add("year-to-selector-filters")
+    toDiv.appendChild(selector2)
+    let testOption2=document.createElement("option");
+    selector2.appendChild(testOption2);
+    
+    let arr=[1970,1980,1990,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
+
+    for(i=0;i<arr.length;i++){
+        selector.appendChild(createYearOption(arr[i]))
+        selector2.appendChild(createYearOption(arr[i]))
+    }
 
     return mainDiv;
 } 
 
+// create price options
+function createPriceOption(obj){
+    let option=document.createElement("option");
+    option.id=obj;
+    option.textContent=obj +" EUR";
+
+    return option;
+}
 
 
 // create price selector
@@ -250,13 +335,29 @@ function createPriceSelector() {
     toLabel.textContent="To"
     toDiv.appendChild(toLabel)
 
+
+
     let selector = document.createElement("select");
     selector.classList.add("price-from-selector-filters")
     fromDiv.appendChild(selector)
 
+    let testOption1=document.createElement("option");
+    selector.appendChild(testOption1);
+
     let selector2 = document.createElement("select");
-    selector.classList.add("price-to-selector-filters")
+    selector2.classList.add("price-to-selector-filters")
     toDiv.appendChild(selector2)
+
+    let testOption2=document.createElement("option");
+    selector2.appendChild(testOption2);
+
+    let arr=[1000,5000,10000,50000,100000,150000,200000];
+
+    for(i=0;i<arr.length;i++){
+        selector.appendChild(createPriceOption(arr[i]))
+        selector2.appendChild(createPriceOption(arr[i]))
+    }
+
 
 
     return mainDiv;
@@ -301,6 +402,19 @@ function createKmSelector() {
     let selector2 = document.createElement("select");
     selector.classList.add("km-to-selector-filters")
     toDiv.appendChild(selector2)
+
+    let testOption1=document.createElement("option");
+    selector.appendChild(testOption1);
+
+    let testOption2=document.createElement("option");
+    selector2.appendChild(testOption2);
+
+    let arr=[0,1000,5000,10000,50000,100000,150000,200000];
+
+    for(i=0;i<arr.length;i++){
+        selector.appendChild(createKmOption(arr[i]))
+        selector2.appendChild(createKmOption(arr[i]))
+    }
 
 
     return mainDiv;
@@ -377,6 +491,7 @@ function filtersSection() {
 
     let filtersSection = document.createElement("section");
     filtersSection.classList.add("filters-section")
+    // filtersSection.classList.add("hide")
     filtersSection.appendChild(createMakerSelector())
     filtersSection.appendChild(createModelSelector());
     filtersSection.appendChild(createYearSelector())
