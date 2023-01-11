@@ -12,8 +12,20 @@ getCars();
 getAllMakers();
 getAllModelsByMaker("Acura");
 
+// filters section selectors 
 
 let makerSelector = document.querySelector(".maker-selector-filters");
+let modelSelector = document.querySelector(".model-selector-filters");
+let fromYear = document.querySelector(".year-from-selector-filters");
+let toYear = document.querySelector(".year-to-selector-filters");
+let fromPrice = document.querySelector(".price-from-selector-filters");
+let toPrice = document.querySelector(".price-to-selector-filters");
+let fromKm = document.querySelector(".km-from-selector-filters");
+let toKm = document.querySelector(".km-to-selector-filters");
+
+let dieselFuel=document.getElementById("diesel")
+let gasolineFuel=document.getElementById("gasoline")
+let gplFuel=document.getElementById("diesel")
 
 makerSelector.addEventListener("change", (e)=>{
     let obj = e.target.value;
@@ -38,5 +50,13 @@ filterButton.addEventListener("click",(e)=>{
 
 })
 
-// YEAR filters / API min year max year for arr 
-// MOVE YEAR to KM 
+let search = document.getElementById("search-filtered-btn")
+search.addEventListener("click",(e)=>{
+
+    let obj = e.target;
+    console.log(obj)
+
+    
+
+
+})

@@ -400,7 +400,7 @@ function createKmSelector() {
     fromDiv.appendChild(selector)
 
     let selector2 = document.createElement("select");
-    selector.classList.add("km-to-selector-filters")
+    selector2.classList.add("km-to-selector-filters")
     toDiv.appendChild(selector2)
 
     let testOption1=document.createElement("option");
@@ -528,5 +528,15 @@ async function getAllModelsByMaker(param){
         document.querySelector(".model-selector-filters").appendChild(populateModelSelector(response[i]))
 
     }
+
+}
+
+
+async function getAllCarsByMinYear(param){
+
+    let response = await fetch(`http://localhost:3000/api/v1/cars/year-filter/min-year=${param}`);
+    response = await response.json();
+
+    console.log(response)
 
 }

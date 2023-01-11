@@ -504,7 +504,7 @@ select {
     width: 100%;
 
     padding: auto;
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
 }
 
 .hide {
@@ -560,7 +560,7 @@ input:checked {
 
         align-items: flex-end;
         justify-content: start; */
-        margin-top: -40px;
+        margin-top: -55px;
         
     }
 
@@ -616,7 +616,7 @@ input:checked {
         border-radius: 5px;
         
         margin: 20px;
-        margin-top: 50px;    
+        margin-top: 70px;    
             font-size: 13px;
             background-color: rgb(252, 197, 0);
         }
@@ -654,7 +654,7 @@ input:checked {
         padding: 10px;
     }
 
-    .hide  {
+    /* .hide  {
         display:
-    }
+    } */
 }
