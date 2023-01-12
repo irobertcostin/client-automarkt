@@ -494,17 +494,25 @@ select {
     margin-left: 5px;
 }
 
-.main-page-content-grid {
+.homepage-content-div1 {
     /* border: 2px solid red; */
 
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow: scroll;
+    /* overflow: scroll; */
     width: 100%;
 
     padding: auto;
     /* padding-bottom: 30px; */
+}
+
+.main-page-content-div {
+
+    overflow: scroll;
+    width: 100%;
+
+    padding: auto;
 }
 
 .hide {

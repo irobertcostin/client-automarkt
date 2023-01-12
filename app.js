@@ -29,7 +29,7 @@ let gplFuel=document.getElementById("diesel")
 
 makerSelector.addEventListener("change", (e)=>{
     let obj = e.target.value;
-    console.log(obj)
+    // console.log(obj)
     document.querySelector(".model-selector-filters").innerHTML=""
     getAllModelsByMaker(obj)
 })
@@ -54,8 +54,15 @@ let search = document.getElementById("search-filtered-btn")
 search.addEventListener("click",(e)=>{
 
     let obj = e.target;
-    console.log(obj)
+    // console.log(obj)
 
+    let filteredMaker = document.querySelector(".maker-selector-filters").value;
+    let filteredModel = document.querySelector(".model-selector-filters").value;
+    console.log(filteredMaker)
+    console.log(filteredModel)
+
+    document.querySelector(".main-page-content-div").innerHTML="";
+    getAllCarsByModel(filteredModel);
     
 
 
