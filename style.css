@@ -494,17 +494,25 @@ select {
     margin-left: 5px;
 }
 
-.main-page-content-grid {
+.homepage-content-div1 {
     /* border: 2px solid red; */
 
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    /* overflow: scroll; */
+    width: 100%;
+
+    padding: auto;
+    /* padding-bottom: 30px; */
+}
+
+.main-page-content-div {
+
     overflow: scroll;
     width: 100%;
 
     padding: auto;
-    padding-bottom: 30px;
 }
 
 .hide {
@@ -560,7 +568,7 @@ input:checked {
 
         align-items: flex-end;
         justify-content: start; */
-        margin-top: -40px;
+        margin-top: -55px;
         
     }
 
@@ -616,7 +624,7 @@ input:checked {
         border-radius: 5px;
         
         margin: 20px;
-        margin-top: 50px;    
+        margin-top: 70px;    
             font-size: 13px;
             background-color: rgb(252, 197, 0);
         }
@@ -654,7 +662,7 @@ input:checked {
         padding: 10px;
     }
 
-    .hide  {
+    /* .hide  {
         display:
-    }
+    } */
 }

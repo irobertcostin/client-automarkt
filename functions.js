@@ -61,6 +61,7 @@ function testDriveAdd() {
 }
 
 
+
 // function to create a smaller div for front page (before modal)
 function createCard (obj){
 
@@ -122,30 +123,47 @@ function createCard (obj){
 }
 
 
+// create a mainDiv for displaying homepage content
+
+function homepageContentDiv1(){
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("homepage-content-div1");
+
+    
+
+
+    return mainDiv
+}
+
 // create the content grid 
 function createMainPageContentGrid(){
 
     let mainDiv=document.createElement("div");
-    mainDiv.classList.add("main-page-content-grid");
+    mainDiv.classList.add("main-page-content-div");
 
+    // mainDiv.appendChild(homepageContentDiv1())
 
     return mainDiv
 }
 
 
 
+
 // retrieve API info - all cars  
 async function getCars(){
+    
+    
 
 
     let response = await fetch ("http://localhost:3000/api/v1/cars");
 
     response = await response.json();
     // console.log(response.masini)
-
-    let contentGrid = document.querySelector(".main-page-content-grid")
-
+    let contentGridParent = document.querySelector(".main-page-content-div")
+    contentGridParent.appendChild(homepageContentDiv1())
+    let contentGrid = document.querySelector(".homepage-content-div1")
     for(i in response.masini) {
+        
         contentGrid.appendChild(createCard(response.masini[i]))
     }
 
@@ -400,7 +418,7 @@ function createKmSelector() {
     fromDiv.appendChild(selector)
 
     let selector2 = document.createElement("select");
-    selector.classList.add("km-to-selector-filters")
+    selector2.classList.add("km-to-selector-filters")
     toDiv.appendChild(selector2)
 
     let testOption1=document.createElement("option");
@@ -470,6 +488,9 @@ function createFuelType (){
 
 
 
+
+
+
 // create search filtered button 
 
 function searchFilteredButton() {
@@ -478,11 +499,6 @@ function searchFilteredButton() {
     btn.id="search-filtered-btn"
     return btn;
 }
-
-
-
-
-
 
 
 // create filters section
@@ -528,5 +544,42 @@ async function getAllModelsByMaker(param){
         document.querySelector(".model-selector-filters").appendChild(populateModelSelector(response[i]))
 
     }
+
+}
+
+
+async function getAllCarsByMinYear(param){
+
+    let response = await fetch(`http://localhost:3000/api/v1/cars/year-filter/min-year=${param}`);
+    response = await response.json();
+
+    console.log(response)
+
+
+}
+
+
+async function getAllCarsByMaxYear(param){
+
+    let response = await fetch(`http://localhost:3000/api/v1/cars/year-filter/max-year=${param}`);
+    response = await response.json();
+
+    console.log(response)
+
+    
+}
+
+// get all Cars by model 
+
+async function getAllCarsByModel(param){
+
+    let response = await fetch(`http://localhost:3000/api/v1/cars/model-filter/model=${param}`)
+    response = await response.json();
+
+    for(let i = 0; i<response.length;i++){
+        document.querySelector(".main-page-content-div").appendChild(createCard(response[i]))
+    }
+
+    
 
 }
